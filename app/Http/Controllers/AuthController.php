@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Model\UserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +15,7 @@ class AuthController extends Controller
         return view('Auth.login');
     }
 
-    public function actionlogin(Request $request)
+    public function login(Request $request)
     {
         $data = [
             'username' => $request->input('username'),

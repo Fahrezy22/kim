@@ -64,7 +64,7 @@
             <div class="modal-header">
                 <h4 class="modal-title">Berita</h4>
             </div>
-            <form action="{{ route('berita') }}" method="POST">
+            <form action="{{ route('beritaAdmin') }}" method="POST">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">

@@ -28,6 +28,10 @@
   <link rel="stylesheet" href="{{asset('template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{asset('template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -43,12 +47,6 @@
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
       </li>
     </ul>
 
@@ -90,17 +88,6 @@
         </div>
       </div>
 
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -144,17 +131,8 @@
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a href="{{route('user')}}" 
-              class="nav-link {{ Route::is('user') ? 'active' : ''}}">
-              <i class="fas fa-user"></i>
-              <p>
-                User
-              </p>
-            </a>
-          </li>
-          <li class="nav-item menu-open">
-            <a href="{{route('berita')}}" 
-              class="nav-link {{ Route::is('berita') ? 'active' : ''}} ">
+            <a href="{{route('beritaAdmin')}}" 
+              class="nav-link {{ Route::is('beritaAdmin') ? 'active' : ''}} ">
               <i class="fas fa-newspaper"></i>
               <p>
                 Berita
@@ -198,7 +176,11 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-@yield('content')
+    <section class="content">
+      <div class="container-fluid">
+          @yield('content')
+      </div><!-- /.container-fluid -->
+    </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -265,10 +247,13 @@
 <script src="{{asset('template/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
 <script src="{{asset('template/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{asset('template/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+
 <script>
   $(function () {
     $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
@@ -281,6 +266,7 @@
       "responsive": true,
     });
   });
+
 </script>
 </body>
 </html>

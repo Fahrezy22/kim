@@ -17,7 +17,13 @@ class CreateAnggotaTable extends Migration
             $table->id();
             $table->string('kd_kim');
             $table->string('nama_kim');
-            $table->string('ttl');
+            $table->string('pendidikan');
+            $table->string('agama');
+            $table->string('hp');
+            $table->string('email');
+            $table->enum('jk', ['L', 'P',]);
+            $table->date('tanggal_lahir');
+            $table->string('tempat_lahir');
             $table->string('alamat_lengkap');
             $table->string('nama');
             $table->timestamps();

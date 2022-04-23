@@ -1,7 +1,12 @@
 @extends('Layout.master2')
 @section('content')
 
-<div class="col-6">
+@if ($data->count())
+            @php
+              $no= 1;
+            @endphp
+<div class="row">
+  <div class="col-6">
   @foreach ($data as $d)
     <div class="card card-primary card-outline">
         <div class="card-header">
@@ -9,22 +14,32 @@
         </div>
         <div class="card-body">
           <p class="card-text" id="dots">
-            {{ str_limit($d->deskripsi, 100, '') }}
-            @if (strlen($d->deskripsi) > 100)
-                <span id="more">{{ substr($d->deskripsi, 100) }}</span>
-            @endif
+                <span id="more">{{$d->deskripsi, 100}}</span>
           </p>
-          <button onclick="myFunction()" id="myBtn">Read more</button>
         </div>
       </div>
-      @endforeach
-</div>
+  @endforeach
+</div></div>
+@else
+    <div class="row">
+      <div class="col-12">
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <h5 class="card-title m-0">Data Berita</h5>
+          </div>
+          <div class="card-body">
+            <p>Data Berita Kosong</p>
+          </div>
+        </div>
+      </div>
+    </div>
+@endif
 
 @endsection
 @section('js')
 <script type="text/javascript">
     // Hide the extra content initially, using JS so that if JS is disabled, no problemo:
-    function myFunction() {
+    function myFunction(i) {
     var dots = document.getElementById("dots");
     var moreText = document.getElementById("more");
     var btnText = document.getElementById("myBtn");

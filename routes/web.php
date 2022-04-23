@@ -2,18 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('auth')->group(function () {
-    route::get('/login', 'Admin\AuthController@index')->name('login');
-    route::post('/login', 'Admin\AuthController@login');
-    route::get('/register', 'Admin\AuthController@register')->name('register');
-    route::post('/register', 'Admin\AuthController@register_pro');
+Route::prefix('Auth')->group(function () {
+    route::get('/', 'AuthController@index')->name('login');
+    route::post('/', 'AuthController@login');
+    route::get('/register', 'AuthController@register')->name('register');
+    route::post('/register', 'AuthController@register_pro');
 });
 
 Route::prefix('/')->group(function () {
-    Route::get('/', 'Admin\AuthController@index')->name('login');
-    Route::post('/', 'Admin\AuthController@actionlogin');
-    Route::get('/register', 'Admin\AuthController@register')->name('register');
-    Route::post('/register', 'Admin\AuthController@register_pro');
+    Route::get('/', 'UserDashboardController@index')->name('public');
+    Route::get('/detail/{id}', 'UserDashboardController@detail');
+    Route::post('/', 'UserDashboardController@store');
+});
+
+Route::prefix('kim')->group(function () {
+    Route::get('/', 'Publik\PublikController@index')->name('kim');
+    Route::post('/', 'Publik\PublikController@store');
+    Route::get('/search', 'Publik\PublikController@search')->name('search');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -50,8 +55,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/delete/{d:id}', 'Admin\UserController@delete');
     });
 
-    Route::prefix('berita')->group(function () {
-        Route::get('/', 'Admin\BeritaController@index')->name('berita');
+    Route::prefix('admin/berita')->group(function () {
+        Route::get('/', 'Admin\BeritaController@index')->name('beritaAdmin');
         Route::post('/', 'Admin\BeritaController@store');
         Route::post('/update/{d:id}', 'Admin\BeritaController@update');
         Route::get('/delete/{d:id}', 'Admin\BeritaController@delete');
@@ -65,12 +70,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
 
-    Route::get('/logout', 'Admin\AuthController@logout')->name('logout');
-});
-
-Route::prefix('public')->group(function () {
-    Route::get('/', 'Publik\PublikController@index')->name('public');
-    Route::post('/', 'Publik\PublikController@store');
+    Route::get('/logout', 'AuthController@logout')->name('logout');
 });
 
 Route::prefix('berita')->group(function () {

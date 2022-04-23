@@ -10,9 +10,15 @@ class AnggotaModel extends Model
     protected $fillable = [
         'id',
         'kd_kim',
-        'nama_kim',
-        'ttl',
+        'agama',
+        'pendidikan',
+        'hp',
+        'email',
+        'tanggal_lahir',
+        'tempat_lahir',
         'alamat_lengkap',
+        'jk',
+        'nama_kim',
         'nama',
         'created_at',
         'deleted_at'

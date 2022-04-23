@@ -11,6 +11,7 @@ class BeritaModel extends Model
         'id',
         'judul_berita',
         'deskripsi',
+        'img',
         'created_at',
         'deleted_at'
     ];

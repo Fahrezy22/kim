@@ -10,7 +10,7 @@
               <p>Jumblah Daerah</p>
             </div>
             <div class="icon">
-              <i class="ion ion-bag"></i>
+              <i class="ion ion-map"></i>
             </div>
           </div>
         </div>
@@ -36,7 +36,7 @@
               <p>Jumlah Gambar</p>
             </div>
             <div class="icon">
-              <i class="ion ion-person-add"></i>
+              <i class="ion ion-image"></i>
             </div>
           </div>
         </div>
@@ -49,7 +49,7 @@
               <p>Jumlah Berita</p>
             </div>
             <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+              <i class="fas fa-newspaper"></i>
             </div>
           </div>
         </div>
@@ -58,34 +58,64 @@
     
       <div class="row">
        
+        @if ($data['berita']->count())
         <div class="col-6">
-            @foreach ($data['berita'] as $d)
-            <div class="card card-primary card-outline">
+          <h3>Data Berita</h3>
+          @foreach ($data['berita'] as $d)
+          <div class="card card-primary card-outline">
+              <div class="card-header">
+                <h5 class="card-title m-0">{{$d->judul_berita}}</h5>
+              </div>
+              <div class="card-body">
+                  <p>
+                      {{$d->deskripsi}}
+                  </p>
+              </div>
+            </div>
+            @endforeach
+      </div>
+        @else
+            <div class="col-6">
+              <h3>Data Berita</h3>
+              <div class="card card-primary card-outline">
                 <div class="card-header">
-                  <h5 class="card-title m-0">{{$d->judul_berita}}</h5>
+                  <h5 class="card-title m-0">Data Berita</h5>
                 </div>
                 <div class="card-body">
-                    <p>
-                        {{$d->deskripsi}}
-                    </p>
+                  <p>Data Berita Kosong</p>
                 </div>
               </div>
-              @endforeach
-        </div>
+            </div>
+        @endif
         
         
+        @if ($data['gambar']->count())
         <div class="col-6">
-            @foreach ($data['gambar'] as $d)
-            <div class="card card-primary card-outline">
-                <div class="card-header">
-                  <h5 class="card-title m-0">{{$d->nama}}</h5>
-                </div>
-                <div class="card-body">
-                  <img src="/upload/{{ $d['nama_gambar'] }}" alt="" width="100%" height="250px" >
-                </div>
+          <h3>Data Dokumentasi</h3>
+          @foreach ($data['gambar'] as $d)
+          <div class="card card-primary card-outline">
+              <div class="card-header">
+                <h5 class="card-title m-0">{{$d->nama}}</h5>
               </div>
-              @endforeach
+              <div class="card-body">
+                <img src="/upload/{{ $d['nama_gambar'] }}" alt="" width="100%" height="250px" >
+              </div>
+            </div>
+            @endforeach
+      </div>
+        @else
+        <div class="col-6">
+          <h3>Data Dokumentasi</h3>
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h5 class="card-title m-0">Data Dokumentasi</h5>
+            </div>
+            <div class="card-body">
+              <p>Data Gambar Kosong</p>
+            </div>
+          </div>
         </div>
+        @endif
         
       </div>
 </div>
