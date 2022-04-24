@@ -16,11 +16,17 @@
               <strong>{{$pesan}}</strong>
             </div>
         @endif
+        @if ($pesan = Session::get('error'))
+            <div class="alert alert-danger">
+              <strong>{{$pesan}}</strong>
+            </div>
+        @endif
       <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"></div><div class="col-sm-12 col-md-6"></div></div><div class="row"><div class="col-sm-12"><table id="example2" class="table table-bordered table-hover dataTable dtr-inline collapsed" role="grid" aria-describedby="example2_info">
         <thead>
           <tr role="row"><th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending">No</th>
               <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column descending" aria-sort="ascending">Judul berita</th>
               <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column descending" aria-sort="ascending">Deskripsi</th>
+              <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column descending" aria-sort="ascending">Gambar</th>
               <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Aksi</th>
           </tr>
         </thead>
@@ -33,6 +39,7 @@
                 <td>{{$no++}}</td>
                 <td>{{$d->judul_berita}}</td>
                 <td>{{$d->deskripsi}}</td>
+                <td><img src="{{asset('image/')}}/{{$d->img}}" width="100px" height="100px"></td>
                 <td>
                     <button class="btn btn-warning" data-toggle="modal"
                         data-target="#edit-{{$d->id}}"><i class="fa fa-edit"></i>
@@ -64,14 +71,20 @@
             <div class="modal-header">
                 <h4 class="modal-title">Berita</h4>
             </div>
-            <form action="{{ route('beritaAdmin') }}" method="POST">
+            <form action="{{ route('beritaAdmin') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Judul berita</label>
                         <input class="form-control" name="judul_berita" type="text" placeholder="Judul berita" required>
+                    </div>
+                    <div class="form-group">
                         <label>Deskripsi</label>
-                        <textarea class="form-control" name="deskripsi" placeholder="deskripsi" id="" cols="30" rows="10" required></textarea>
+                        <textarea class="form-control" name="deskripsi" placeholder="deskripsi" id="" cols="30" rows="5" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-control">Gambar</label>
+                        <input type="file" class="form-control" name="img" id="img" placeholder="Pilih gambar" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -85,7 +98,7 @@
 
 
 @foreach ($data as $d)
-<form action="/berita/update/{{$d->id}}" method="POST">
+<form action="berita/update/{{$d->id}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div id="edit-{{$d->id}}" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -96,9 +109,21 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Judul berita</label>
-                        <input class="form-control" name="judul_berita" type="text" value="{{$d->judul_berita}}" required>
+                        <input class="form-control" name="judul_berita" type="text" placeholder="Judul berita" value="{{$d->judul_berita}}" required>
+                    </div>
+                    <div class="form-group">
                         <label>Deskripsi</label>
-                        <textarea class="form-control" name="deskripsi" cols="30" rows="10"  required>{{$d->deskripsi}}</textarea>
+                        <textarea class="form-control" name="deskripsi" placeholder="deskripsi" id="" cols="30" rows="5" required>{{$d->deskripsi}}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="label-control">Gambar</label>
+                        <input type="file" class="form-control" name="img" id="img" placeholder="Pilih gambar">
+                    </div>
+                    <div class="form-group">
+                        <label class="label-control">Gambar Lama</label>
+                        <div>
+                            <img src="{{asset('image/')}}/{{$d->img}}" width="200px">
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -124,7 +149,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">BATAL</button>
-                <a href="/berita/delete/{{$d->id}}" class="btn btn-danger">HAPUS</a>
+                <a href="berita/delete/{{$d->id}}" class="btn btn-danger">HAPUS</a>
             </div>
         </div>
     </div>

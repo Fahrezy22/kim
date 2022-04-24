@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\AnggotaModel;
+use App\Model\BeritaModel;
 use App\Model\DatakimModel;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,7 @@ class UserDashboardController extends Controller
     {
         $data =  array(
             'all' => DatakimModel::with('kabupaten_rol')->paginate(6),
+            'berita' => BeritaModel::limit(6)->get(),
         );
         return view('dashboard', ['data' => $data]);
     }

@@ -58,17 +58,9 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('admin/berita')->group(function () {
         Route::get('/', 'Admin\BeritaController@index')->name('beritaAdmin');
         Route::post('/', 'Admin\BeritaController@store');
-        Route::post('/update/{d:id}', 'Admin\BeritaController@update');
-        Route::get('/delete/{d:id}', 'Admin\BeritaController@delete');
+        Route::post('/update/{id}', 'Admin\BeritaController@update');
+        Route::get('/delete/{id}', 'Admin\BeritaController@delete');
     });
-
-    Route::prefix('gambar')->group(function () {
-        Route::get('/', 'Admin\GambarController@index')->name('gambar');
-        Route::post('/', 'Admin\GambarController@store');
-        Route::post('/update/{d:id}', 'Admin\GambarController@update');
-        Route::get('/delete/{d:id}', 'Admin\GambarController@delete');
-    });
-
 
     Route::get('/logout', 'AuthController@logout')->name('logout');
 });

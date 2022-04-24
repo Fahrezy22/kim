@@ -139,15 +139,6 @@
               </p>
             </a>
           </li>
-          <li class="nav-item menu-open">
-            <a href="{{route('gambar')}}" 
-              class="nav-link {{ Route::is('gambar') ? 'active' : ''}} ">
-              <i class="fas fa-image"></i>
-              <p>
-                Gambar
-              </p>
-            </a>
-          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
