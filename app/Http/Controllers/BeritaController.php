@@ -9,7 +9,7 @@ class BeritaController extends Controller
 {
     public function index()
     {
-        $data = BeritaModel::all();
+        $data = BeritaModel::paginate(6);
         return view('berita')->with('data', $data);
     }
 }

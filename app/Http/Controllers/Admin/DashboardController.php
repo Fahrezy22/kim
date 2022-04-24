@@ -16,10 +16,8 @@ class DashboardController extends Controller
         $data = array(
             'jumlah_daerah' => DaerahModel::count(),
             'jumlah_kim' => DatakimModel::count(),
-            'jumlah_gambar' => GambarModel::count(),
             'jumlah_berita' => BeritaModel::count(),
-            'berita' => BeritaModel::all(),
-            'gambar' => GambarModel::all(),
+            'berita' => BeritaModel::limit(6)->get(),
         );
         return view('Admin.dashboard', ['data' => $data]);
     }

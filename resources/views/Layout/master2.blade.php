@@ -36,18 +36,6 @@
               Kim
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{route('berita')}}"
-            class="nav-link">
-              Berita
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{route('dokumentasi')}}" 
-            class="nav-link">
-              Dokumentasi
-            </a>
-          </li>
         </ul>
       </div>
     </div>
