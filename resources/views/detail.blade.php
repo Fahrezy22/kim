@@ -64,72 +64,52 @@
           @endforeach
     </div>
 </div>
+
 <div class="row">
-        @foreach ($data['anggota'] as $d)
-        <div class="col-6">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title m-0">Anggota</h5>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-6">
-                            <label for="" class="float-left col-6">Kode KIM</label>
-                            <p class="float-right col-6">: {{$d->kd_kim}}</p>
-                        </div>
-                        <div class="col-6">
-                            <label for="" class="float-left col-6">Nama</label>
-                            <p class="float-right col-6">: {{$d->nama}}</p>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-6">
-                            <label for="" class="float-left col-6">Nomor HP </label>
-                            <p class="float-right col-6">: {{$d->hp}}</p>
-                        </div>
-                        <div class="col-6">
-                            <label for="" class="float-left col-6">Email</label>
-                            <p class="float-right col-6">: {{$d->email}}</p>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-6">
-                            <label for="" class="float-left col-6">Jenis Kelamin</label>
-                            @if ($d->jk == 'L')
-                                <p class="float-right col-6">: Laki Laki</p>
-                            @else
-                                <p class="float-right col-6">: Perempuan</p>
-                            @endif
-                        </div>
-                        <div class="col-6">
-                            <label for="" class="float-left col-6">Pendidikan</label>
-                            <p class="float-right col-6">: {{$d->pendidikan}}</p>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-6">
-                            <label for="" class="float-left col-6">Agama</label>
-                            <p class="float-right col-6">: {{$d->agama}}</p>
-                        </div>
-                        <div class="col-6">
-                            <label for="" class="float-left col-6">Alamat</label>
-                            <p class="float-right col-6">: {{$d->alamat_lengkap}}</p>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-6">
-                            <label for="" class="float-left col-6">Tanggal lahir</label>
-                            <p class="float-right col-6">: {{date('d-m-Y', strtotime($d->ttl))}}</p>
-                        </div>
-                        <div class="col-6">
-                            <label for="" class="float-left col-6">Tempat Lahir</label>
-                            <p class="float-right col-6">: {{$d->tempat_lahir}}</p>
-                        </div>
-                      </div>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>Anggota</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Tanggal lahir</th>
+                                <th>Jenis Kelamin</th>
+                                <th>Agama</th>
+                                <th>Nomor hp</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php
+                                $no = 1;
+                            @endphp
+                            @foreach ($data['anggota'] as $d)
+                                <tr>
+                                    <td>{{$no++}}</td>
+                                    <td>{{$d->nama}}</td>
+                                    <td>{{date('d-m-Y', strtotime($d->ttl))}}</td>
+                                    <td>
+                                        @if ($d->jk == "L")
+                                            Laki - laki
+                                        @else
+                                            Perempuan
+                                        @endif
+                                    </td>
+                                    <td>{{$d->agama}}</td>
+                                    <td>{{$d->hp}}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-        @endforeach
+    </div>
 </div>
   
 @endsection
