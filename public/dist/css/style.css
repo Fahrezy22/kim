@@ -1,0 +1,420 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#main-nav {
+	background-color: rgb(17, 17, 17);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+	width: 0;
+}
+
+#scrollPath {
+	position: fixed;
+	z-index: 1000;
+	top: 0;
+	right: 0;
+	width: 10px;
+	height: 100%;
+	background: rgba(255, 255, 255, 0.05);
+}
+
+#progressbar {
+	position: fixed;
+	z-index: 1000;
+	top: 0;
+	right: 0;
+	width: 10px;
+	background: linear-gradient(to top, #008aff, #00ffe7);
+	animation: animate 5s linear infinite;
+}
+
+@keyframes animate {
+
+	0%,
+	100% {
+		filter: hue-rotate(0deg);
+	}
+
+	50% {
+		filter: hue-rotate(360deg);
+	}
+}
+
+#progressbar:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(to top, #008aff, #00ffe7);
+	filter: blur(10px);
+}
+
+#progressbar:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(to top, #008aff, #00ffe7);
+	filter: blur(20px);
+}
+
+.sosmed div {
+	background-color: rgba(0, 0, 0, 0.301);
+}
+
+.sosmed div:hover {
+	background-color: rgba(0, 0, 0, 0.11);
+}
+
+.underline {
+	height: 2px;
+	width: 0;
+	transition: 0.5s;
+	background-color: #0dcaf0;
+}
+
+.nav-item:hover .underline {
+	width: 100%;
+}
+
+.sub-menu:hover .sub-menu-konten {
+	display: block;
+}
+
+.sub-menu-konten {
+	display: none;
+	position: absolute;
+	background-color: white;
+	box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
+	z-index: 20;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	border-radius: 3px 3px 3px 3px;
+	min-width: 160px;
+	opacity: 5;
+}
+
+.sub-menu-konten a {
+	text-decoration: none;
+	color: black;
+	padding: 7px 12px;
+	display: block;
+	text-align: left;
+}
+
+.sub-menu-konten a:hover {
+	background-color: rgb(244, 253, 255);
+	border-radius: 3px 3px 3px 3px;
+}
+
+/* Animation Wave */
+.wave {
+	position: absolute;
+	z-index: 1;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 90px;
+	background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg");
+	background-size: 1600px 130px;
+}
+
+.wave.wave1 {
+	animation: animate-wave-1 10s linear infinite;
+	z-index: 90;
+	opacity: 1;
+	animation-delay: 0s;
+	bottom: 0;
+}
+
+.wave.wave2 {
+	animation: animate-wave-2 5s linear infinite;
+	z-index: 89;
+	opacity: 0.5;
+	animation-delay: -5s;
+	bottom: 0;
+}
+
+.wave.wave3 {
+	animation: animate-wave-3 10s linear infinite;
+	z-index: 88;
+	opacity: 0.2;
+	animation-delay: -2s;
+	bottom: 0;
+}
+
+.wave.wave4 {
+	animation: animate-wave-4 10s linear infinite;
+	z-index: 87;
+	opacity: 0.7;
+	animation-delay: -5s;
+	bottom: 0;
+}
+
+@keyframes animate-wave-1 {
+	0% {
+		background-position-x: 0;
+	}
+
+	100% {
+		background-position-x: 1600px;
+	}
+}
+
+@keyframes animate-wave-2 {
+	0% {
+		background-position-x: 0;
+	}
+
+	100% {
+		background-position-x: -1600px;
+	}
+}
+
+@keyframes animate-wave-3 {
+	0% {
+		background-position-x: 0;
+	}
+
+	100% {
+		background-position-x: 1600px;
+	}
+}
+
+@keyframes animate-wave-4 {
+	0% {
+		background-position-x: 0;
+	}
+
+	100% {
+		background-position-x: -1600px;
+	}
+}
+
+/* Section form pendaftaran */
+.form-icon:hover img {
+	transform: translateY(-20px);
+}
+
+.form-icon img {
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+/* <!-- Berita */
+.news {
+	font-family: 'Raleway', sans-serif;
+}
+
+.card-image img {
+	display: block;
+	width: 90%;
+	height: auto;
+	border-radius: 5px;
+	margin: auto;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.card-title a {
+	text-decoration: none;
+	color: black;
+}
+
+div .news-body {
+	border: 1px solid rgba(0, 0, 0, 0.062);
+	border-radius: 5px;
+	box-shadow: 7px 7px 10px 1px rgba(0, 255, 0, 0.247);
+}
+
+div .news-body:hover {
+	border: 1px solid rgba(0, 0, 0, 0.062);
+	border-radius: 5px;
+	box-shadow: 7px 7px 15px 2px rgba(0, 255, 0, 0.74);
+}
+
+/* <!-- Detail Berita */
+.blog_image img {
+	margin-top: 100px;
+	margin-bottom: 10px;
+	width: 60%;
+	height: auto;
+}
+
+div .blog_title {
+	font-family: 'Raleway', sans-serif;
+	font-size: 25px;
+	font-weight: bold;
+	margin-top: 30px;
+}
+
+/* <!-- News Home */
+.news_home img {
+	display: block;
+	width: 95%;
+	height: auto;
+	margin: auto;
+	margin-top: 15px;
+	margin-bottom: 5px;
+}
+
+/* <!-- Form */
+.forms-heading {
+	background-image: linear-gradient(#00eeeed3 50%, #00b3c0);
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.forms-heading .forms-title {
+	text-align: center;
+	font-family: Trebuchet MS;
+}
+
+.forms-content {
+	background-image: linear-gradient(#00b3c0 10%, #00eeff);
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+.forms-content .forms {
+	margin-top: 50px;
+	font-family: Trebuchet MS;
+}
+
+@media screen and (max-width: 770px) {
+	.portal {
+		width: 100%;
+	}
+
+	.sosmed {
+		width: 100%;
+		margin-top: 10px;
+	}
+
+	.formz img {
+		width: 40px !important;
+	}
+
+	.formz h4 {
+		font-size: 11px;
+	}
+
+	.tentang h5 {
+		font-size: 15px;
+	}
+
+	.tentang p {
+		font-size: 13px;
+	}
+
+	.alamat {
+
+		width: 100%;
+		margin-bottom: 40px;
+	}
+
+	.waktu {
+		width: 100%;
+		margin-bottom: 40px;
+	}
+
+	.telepon {
+		width: 100%;
+		margin-bottom: 40px;
+	}
+
+	.email {
+		width: 100%;
+	}
+
+	.berita {
+		width: 50%;
+	}
+
+	.berita i {
+		font-size: 12px;
+		margin-left: -10px !important;
+		margin-right: 5px !important;
+	}
+
+	.berita h5 {
+		font-size: 14px;
+	}
+
+	.portal-berita {
+		width: 100%;
+		margin-top: 30px !important;
+		margin-bottom: 2px !important;
+	}
+
+	.portal-berita img {
+		width: 17vh;
+		margin-left: 10px;
+	}
+
+	.portal-berita h5 {
+		margin-top: -99px;
+		margin-bottom: -2px !important;
+		margin-left: 20vh !important;
+		font-size: 13px;
+	}
+
+	.portal-berita i {
+		margin-left: 20vh !important;
+		margin-bottom: 10px !important;
+		font-size: 9px;
+	}
+
+	.portal-berita .isi p {
+		margin-left: 18vh !important;
+		margin-bottom: 10px !important;
+		font-size: 11px;
+	}
+
+	.portal-berita p {
+		margin-left: 20vh !important;
+		margin-bottom: 5px !important;
+		font-size: 11px;
+	}
+
+	.blog_image img {
+		width: 100%;
+	}
+
+	.blog_content i {
+		font-size: 14px;
+	}
+
+	.blog_content .blog_title {
+		font-size: 18px;
+	}
+
+	.blog_content p {
+		font-size: 14px;
+	}
+
+	.forms-group {
+		margin-left: 10px;
+	}
+
+	.forms-heading img {
+		width: 10vh;
+	}
+
+	footer .mapz {
+		margin-top: 30px;
+	}
+
+	footer iframe {
+		width: 100%;
+	}
+}

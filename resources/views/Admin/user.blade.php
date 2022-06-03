@@ -1,4 +1,7 @@
 @extends('Layout.master')
+@section('breadcumb')
+    User
+@endsection
 @section('content')
 
 <div class="card">
