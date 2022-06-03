@@ -1,4 +1,7 @@
 @extends('Layout.master')
+@section('breadcumb')
+    Dashboard
+@endsection
 @section('content')
 <div class="container">
     <div class="row">

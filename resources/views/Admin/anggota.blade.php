@@ -1,4 +1,7 @@
 @extends('Layout.master')
+@section('breadcumb')
+    Anggota
+@endsection
 @section('content')
 
 <div class="row">

@@ -1,4 +1,7 @@
 @extends('Layout.master')
+@section('breadcumb')
+    Data Kim
+@endsection
 @section('content')
 <div class="card">
     <div class="card-header">
